@@ -4,14 +4,14 @@ import argparse
 import sys
 import os
 from pathlib import Path
-from time import time
+import multiprocessing
 
 #Dependencies
 import pickle
 import higra as hg 
 import cv2
 import numpy as np
-import multiprocessing
+
 
 #Support functions
 from utils import resize, conv_tri, rgb2luv, gradient, histogram
@@ -32,7 +32,7 @@ def parserFunction():
     requiredNamed.add_argument("--type", help="Indicate the type of the input as image (I) or weighted graph (G).", choices=['I','G'], required=True)
     requiredNamed.add_argument("--input", help="The path for the input. If the path is a directory the program will compute the gradient for all files within.", required=True)
     parser.add_argument("--output", help="Path to save the computed gradient. Default= ./GIG_gradients/", default='GIG_gradients/')
-    parser.add_argument("--model", help="Path to the trained GIG model. Default= ./GIG-model.pkl/", default='GIG-model.pkl')
+    parser.add_argument("--model", help="Path to the trained GIG model. Default= ./GIG-model.pkl", default="")
     args=parser.parse_args()
     print()
     print('Compute GIG gradients for:')
@@ -40,7 +40,7 @@ def parserFunction():
     else: print("Input type: graph")
     print("Input path:", args.input)
     print("Out folder:", args.output)
-    print("Model path:",args.model)
+    print("Model path: %sGIG-model.pkl"%args.model)
     print()
     return args.type, args.input, args.output, args.model
 
@@ -181,7 +181,13 @@ if __name__ == '__main__':
     if not os.path.exists(output_path): os.makedirs(output_path)
 
     #Load model
-    model=pickle.load(open(model_path, 'rb'))
+    model_folder=model_path+'GIG-model.pkl'
+    try:
+        model=pickle.load(open(model_folder, 'rb'))               
+    except:
+        print()
+        print("Please provide the full path where GIG-model.pkl is located. Provided: ", model_path)
+        sys.exit()    
     model.n_jobs=1
     
     #Read input path and creat list of files to compute
