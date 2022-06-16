@@ -202,13 +202,12 @@ if __name__ == '__main__':
                 print("ERROR: Not a valid input image. Provided: ", sample)
                 sys.exit()
         print("\nOverhead time required to convert image to graph.")  
-        start_time=time()  
+        #Execute GIG for image(s) in samples 
         pool = multiprocessing.Pool()          
         for sample in samples:
             pool.apply_async(getGraph, args=(sample, ))
         pool.close()
         pool.join() 
-        print("Time  %s seconds" % (time() - start_time))
     else:
         #Check files
         for sample in samples:
