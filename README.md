@@ -4,7 +4,7 @@ Python implementation to compute gradients using the GIG method, originaly publi
 
 > **Descriptive Image Gradient from Edge-Weighted Image Graph and Random Forests**   
 R. Almeida, Z. K. G. Patrocínio, A. d. A. Araújo, E. Kijak, S. Malinowski and S. J. F. Guimarães  
-2021 34th SIBGRAPI Conference on Graphics, Patterns and Images [doi:](10.1109/SIBGRAPI54419.2021.00053).
+2021 34th SIBGRAPI Conference on Graphics, Patterns and Images [doi](10.1109/SIBGRAPI54419.2021.00053).
 
 GIG is framework operating on an edge-weighted graph coupled with
 Random Forest estimates to create very descriptive image
