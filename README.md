@@ -4,7 +4,7 @@ Python implementation to compute gradients using the GIG method, originally publ
 
 > **Descriptive Image Gradient from Edge-Weighted Image Graph and Random Forests**   
 R. Almeida, Z. K. G. Patrocínio, A. d. A. Araújo, E. Kijak, S. Malinowski and S. J. F. Guimarães  
-2021 34th SIBGRAPI Conference on Graphics, Patterns and Images [doi](10.1109/SIBGRAPI54419.2021.00053).
+2021 34th SIBGRAPI Conference on Graphics, Patterns and Images [doi](https://doi.org/10.1109/SIBGRAPI54419.2021.00053).
 
 GIG is a framework operating on an edge-weighted graph coupled with Random Forest estimates to create very descriptive image gradients. The gradients computed by GIG have:
 
@@ -45,5 +45,5 @@ python computeGIG --type I --input /path/to/directory/with/images
 
 
 Our method uses [Higra](https://higra.readthedocs.io/en/stable/), a C++/Python library for efficient sparse graph analysis:
-> B. Perret, G. Chierchia, J. Cousty, S.J. F. Guimarães, Y. Kenmochi, L. Najman, Higra: Hierarchical Graph Analysis, SoftwareX, Volume 10, 2019. [doi](10.1016/j.softx.2019.100335)e 
+> B. Perret, G. Chierchia, J. Cousty, S.J. F. Guimarães, Y. Kenmochi, L. Najman, Higra: Hierarchical Graph Analysis, SoftwareX, Volume 10, 2019. [doi](https://doi.org/10.1016/j.softx.2019.100335)
 
