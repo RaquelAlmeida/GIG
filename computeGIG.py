@@ -114,17 +114,11 @@ def getFeaturesGraph(g,edge_weights,img,size,image_name):
         nei=[]
         for e in g.out_edges(v):
             u=g.target(e)         
-            w=edge_weights[g.index(e)]
-            nei.append(w)
-                
             nei_nei=[]            
-            for f in g.out_edges(u):
-                p=g.target(f)
-                if p==v: continue         
+            for f in g.out_edges(u):       
                 w=edge_weights[g.index(f)]
-                nei_nei.append(w)
-                    
-            nei_nei=padding(nei_nei,7)
+                nei_nei.append(w)                    
+            nei_nei=padding(nei_nei,8)
             nei.extend(nei_nei)        
         nei=padding(nei,64)
         ftrs[v,13:ftr_size]=nei
