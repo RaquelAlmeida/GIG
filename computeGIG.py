@@ -106,11 +106,11 @@ def getFeaturesGraph(g,edge_weights,img,size,image_name):
     
     #Compute color features
     color_features=getColorFeat(img)
+    colors = color_features.reshape((color_features.shape[0]*color_features.shape[1]), color_features.shape[2])
+    ftrs[:,:13]=colors
     
     # Get edge weights for imediate neighbors and neighbors of neighbors
     for v in g.vertices():
-        x,y=np.unravel_index(v, size)
-        ftrs[v,0:13]=color_features[x,y,:]
         nei=[]
         for e in g.out_edges(v):
             u=g.target(e)         
